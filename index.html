@@ -10,7 +10,7 @@
       padding: 0;
       height: 100%;
       overflow: hidden;
-      background-image: url('image/test 3/background.png');
+      background-images: url('images/test 3/background.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -52,11 +52,11 @@
   <div class="container">
     <script>
       const container = document.querySelector('.container');
-      const rows = [9, 10, 11, 12, 13, 14, 15, 16];
-      const charWidth = 36;
-      const rowHeight = 44;
+      const rows = [9, 10, 11, 12, 13, 14, 15, 16]; // Total = 100 characters
+      const charWidth = 36;  // tighter spacing horizontally
+      const rowHeight = 44;  // tighter spacing vertically
       const charSize = 64;
-      const startTop = 5;
+      const startTop = 5; // percentage from top
 
       let characterCount = 1;
 
@@ -77,8 +77,8 @@
           wrapper.style.left = `${leftPx}px`;
 
           wrapper.innerHTML = `
-            <img class="character" src="image/test 3.png" />
-            <img class="shadow" src="image/test 3/shadow.png" />
+            <img class="character" src="images/character${characterCount}.png" />
+            <img class="shadow" src="images/test 3/shadow.png" />
           `;
 
           container.appendChild(wrapper);
