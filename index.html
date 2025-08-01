@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Character Grid</title>
+  <title>Character Grid Viewer</title>
   <style>
     body, html {
       margin: 0;
@@ -11,23 +11,10 @@
       height: 100%;
       overflow: hidden;
       font-family: sans-serif;
+      background-image: url('images/background.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-    }
-
-    #background-upload {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      z-index: 10;
-    }
-
-    #shadow-upload {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      z-index: 10;
     }
 
     .grid {
@@ -73,83 +60,57 @@
       opacity: 0.5;
       z-index: 0;
     }
-
-    input[type="file"] {
-      display: block;
-      margin: 4px auto;
-    }
   </style>
 </head>
 <body>
-
-<input type="file" id="background-upload" accept="image/*">
-<input type="file" id="shadow-upload" accept="image/*">
-
-<div class="grid" id="grid">
-  <!-- 9 slots -->
-  <!-- We'll generate them in JavaScript -->
-</div>
-
-<script>
-  const grid = document.getElementById('grid');
-  const slots = [];
-
-  for (let i = 0; i < 9; i++) {
-    const slot = document.createElement('div');
-    slot.classList.add('slot');
-
-    const head = document.createElement('img');
-    head.classList.add('head');
-
-    const body = document.createElement('img');
-    body.classList.add('body');
-
-    const shadow = document.createElement('img');
-    shadow.classList.add('shadow');
-
-    const headInput = document.createElement('input');
-    headInput.type = 'file';
-    headInput.accept = 'image/*';
-    headInput.onchange = (e) => {
-      const file = e.target.files[0];
-      if (file) head.src = URL.createObjectURL(file);
-    };
-
-    const bodyInput = document.createElement('input');
-    bodyInput.type = 'file';
-    bodyInput.accept = 'image/*';
-    bodyInput.onchange = (e) => {
-      const file = e.target.files[0];
-      if (file) body.src = URL.createObjectURL(file);
-    };
-
-    slot.appendChild(head);
-    slot.appendChild(body);
-    slot.appendChild(shadow);
-    slot.appendChild(headInput);
-    slot.appendChild(bodyInput);
-
-    grid.appendChild(slot);
-    slots.push(shadow); // For global shadow control
-  }
-
-  document.getElementById('background-upload').addEventListener('change', function(e) {
-    const file = e.target.files[0];
-    if (file) {
-      const url = URL.createObjectURL(file);
-      document.body.style.backgroundImage = `url(${url})`;
-    }
-  });
-
-  document.getElementById('shadow-upload').addEventListener('change', function(e) {
-    const file = e.target.files[0];
-    if (file) {
-      const url = URL.createObjectURL(file);
-      slots.forEach(shadowImg => {
-        shadowImg.src = url;
-      });
-    }
-  });
-</script>
+  <div class="grid">
+    <!-- 9 character slots -->
+    <!-- Replace head#.png and body#.png as needed -->
+    <div class="slot">
+      <img class="head" src="images/test 1.png" />
+      <img class="body" src="images/test 2.png" />
+      <img class="shadow" src="images/shadow.png" />
+    </div>
+    <div class="slot">
+      <img class="head" src="images/head2.png" />
+      <img class="body" src="images/body2.png" />
+      <img class="shadow" src="images/shadow.png" />
+    </div>
+    <div class="slot">
+      <img class="head" src="images/head3.png" />
+      <img class="body" src="images/body3.png" />
+      <img class="shadow" src="images/shadow.png" />
+    </div>
+    <div class="slot">
+      <img class="head" src="images/head4.png" />
+      <img class="body" src="images/body4.png" />
+      <img class="shadow" src="images/shadow.png" />
+    </div>
+    <div class="slot">
+      <img class="head" src="images/head5.png" />
+      <img class="body" src="images/body5.png" />
+      <img class="shadow" src="images/shadow.png" />
+    </div>
+    <div class="slot">
+      <img class="head" src="images/head6.png" />
+      <img class="body" src="images/body6.png" />
+      <img class="shadow" src="images/shadow.png" />
+    </div>
+    <div class="slot">
+      <img class="head" src="images/head7.png" />
+      <img class="body" src="images/body7.png" />
+      <img class="shadow" src="images/shadow.png" />
+    </div>
+    <div class="slot">
+      <img class="head" src="images/head8.png" />
+      <img class="body" src="images/body8.png" />
+      <img class="shadow" src="images/shadow.png" />
+    </div>
+    <div class="slot">
+      <img class="head" src="images/head9.png" />
+      <img class="body" src="images/body9.png" />
+      <img class="shadow" src="images/shadow.png" />
+    </div>
+  </div>
 </body>
 </html>
