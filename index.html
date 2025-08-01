@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mass Character Grid</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      background-image: url('image/test 3/background.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .character-wrapper {
+      position: absolute;
+      width: 64px;
+      height: 64px;
+    }
+
+    .character {
+      width: 64px;
+      height: 64px;
+      z-index: 2;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .shadow {
+      width: 64px;
+      height: 32px;
+      position: absolute;
+      top: 48px;
+      left: 0;
+      opacity: 0.5;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <script>
+      const container = document.querySelector('.container');
+      const rows = [9, 10, 11, 12, 13, 14, 15, 16];
+      const charWidth = 36;
+      const rowHeight = 44;
+      const charSize = 64;
+      const startTop = 5;
+
+      let characterCount = 1;
+
+      rows.forEach((charsInRow, rowIndex) => {
+        const rowTop = `${startTop + rowIndex * 5}%`;
+        const totalRowWidth = charsInRow * charWidth;
+        const screenCenter = window.innerWidth / 2;
+        const rowStartLeft = screenCenter - (totalRowWidth / 2);
+
+        for (let i = 0; i < charsInRow; i++) {
+          if (characterCount > 100) break;
+
+          const leftPx = rowStartLeft + i * charWidth;
+
+          const wrapper = document.createElement('div');
+          wrapper.className = 'character-wrapper';
+          wrapper.style.top = `calc(${rowTop})`;
+          wrapper.style.left = `${leftPx}px`;
+
+          wrapper.innerHTML = `
+            <img class="character" src="image/test 3/character${characterCount}.png" />
+            <img class="shadow" src="image/test 3/shadow.png" />
+          `;
+
+          container.appendChild(wrapper);
+          characterCount++;
+        }
+      });
+    </script>
+  </div>
+</body>
+</html>
