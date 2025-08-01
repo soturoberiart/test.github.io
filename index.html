@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Character Grid</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: sans-serif;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    #background-upload {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 10;
+    }
+
+    #shadow-upload {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 10;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 20px;
+      width: 320px;
+      height: 320px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .slot {
+      width: 100px;
+      height: 100px;
+      position: relative;
+      text-align: center;
+    }
+
+    .slot img {
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .head {
+      top: 0;
+      z-index: 2;
+    }
+
+    .body {
+      top: 32px;
+      z-index: 1;
+    }
+
+    .shadow {
+      top: 64px;
+      opacity: 0.5;
+      z-index: 0;
+    }
+
+    input[type="file"] {
+      display: block;
+      margin: 4px auto;
+    }
+  </style>
+</head>
+<body>
+
+<input type="file" id="background-upload" accept="image/*">
+<input type="file" id="shadow-upload" accept="image/*">
+
+<div class="grid" id="grid">
+  <!-- 9 slots -->
+  <!-- We'll generate them in JavaScript -->
+</div>
+
+<script>
+  const grid = document.getElementById('grid');
+  const slots = [];
+
+  for (let i = 0; i < 9; i++) {
+    const slot = document.createElement('div');
+    slot.classList.add('slot');
+
+    const head = document.createElement('img');
+    head.classList.add('head');
+
+    const body = document.createElement('img');
+    body.classList.add('body');
+
+    const shadow = document.createElement('img');
+    shadow.classList.add('shadow');
+
+    const headInput = document.createElement('input');
+    headInput.type = 'file';
+    headInput.accept = 'image/*';
+    headInput.onchange = (e) => {
+      const file = e.target.files[0];
+      if (file) head.src = URL.createObjectURL(file);
+    };
+
+    const bodyInput = document.createElement('input');
+    bodyInput.type = 'file';
+    bodyInput.accept = 'image/*';
+    bodyInput.onchange = (e) => {
+      const file = e.target.files[0];
+      if (file) body.src = URL.createObjectURL(file);
+    };
+
+    slot.appendChild(head);
+    slot.appendChild(body);
+    slot.appendChild(shadow);
+    slot.appendChild(headInput);
+    slot.appendChild(bodyInput);
+
+    grid.appendChild(slot);
+    slots.push(shadow); // For global shadow control
+  }
+
+  document.getElementById('background-upload').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (file) {
+      const url = URL.createObjectURL(file);
+      document.body.style.backgroundImage = `url(${url})`;
+    }
+  });
+
+  document.getElementById('shadow-upload').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (file) {
+      const url = URL.createObjectURL(file);
+      slots.forEach(shadowImg => {
+        shadowImg.src = url;
+      });
+    }
+  });
+</script>
+</body>
+</html>
