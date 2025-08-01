@@ -3,98 +3,80 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Character Grid Viewer</title>
+  <title>Custom Character Viewer</title>
   <style>
-    body, html {
+    html, body {
       margin: 0;
       padding: 0;
       height: 100%;
       overflow: hidden;
-      font-family: sans-serif;
       background-image: url('images/background.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(3, 1fr);
-      gap: 20px;
-      width: 320px;
-      height: 320px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+    .container {
+      position: relative;
+      width: 100%;
+      height: 100%;
     }
 
-    .slot {
-      width: 100px;
-      height: 100px;
-      position: relative;
-      text-align: center;
+    .character-wrapper {
+      position: absolute;
+      width: 64px;
+      height: 64px;
     }
 
     .character {
-      position: absolute;
-      width: 32px;
+      width: 64px;
       height: 64px;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
       z-index: 2;
+      position: absolute;
+      top: 0;
+      left: 0;
     }
 
     .shadow {
-      position: absolute;
-      width: 32px;
+      width: 64px;
       height: 32px;
-      top: 52px; /* 64px (character height) - 12px overlap */
-      left: 50%;
-      transform: translateX(-50%);
+      position: absolute;
+      top: 48px; /* 64 - 16px overlap */
+      left: 0;
       opacity: 0.5;
       z-index: 1;
     }
   </style>
 </head>
 <body>
-  <div class="grid">
-    <div class="slot">
-      <img class="character" src="images/character1.png" />
+  <div class="container">
+    <!-- Character 1 (Top-left girl) -->
+    <div class="character-wrapper" style="top: 35%; left: 42%;">
+      <img class="character" src="images/test 3.png" />
       <img class="shadow" src="images/shadow.png" />
     </div>
-    <div class="slot">
+
+    <!-- Character 2 (Top-center black hair girl) -->
+    <div class="character-wrapper" style="top: 34%; left: 50%;">
       <img class="character" src="images/character2.png" />
       <img class="shadow" src="images/shadow.png" />
     </div>
-    <div class="slot">
+
+    <!-- Character 3 (Top-right orange hair guy) -->
+    <div class="character-wrapper" style="top: 35%; left: 58%;">
       <img class="character" src="images/character3.png" />
       <img class="shadow" src="images/shadow.png" />
     </div>
-    <div class="slot">
+
+    <!-- Character 4 (Black suit guy bottom left) -->
+    <div class="character-wrapper" style="top: 45%; left: 46%;">
       <img class="character" src="images/character4.png" />
       <img class="shadow" src="images/shadow.png" />
     </div>
-    <div class="slot">
+
+    <!-- Character 5 (Red bandana guy bottom right) -->
+    <div class="character-wrapper" style="top: 45%; left: 53%;">
       <img class="character" src="images/character5.png" />
-      <img class="shadow" src="images/shadow.png" />
-    </div>
-    <div class="slot">
-      <img class="character" src="images/character6.png" />
-      <img class="shadow" src="images/shadow.png" />
-    </div>
-    <div class="slot">
-      <img class="character" src="images/character7.png" />
-      <img class="shadow" src="images/shadow.png" />
-    </div>
-    <div class="slot">
-      <img class="character" src="images/character8.png" />
-      <img class="shadow" src="images/shadow.png" />
-    </div>
-    <div class="slot">
-      <img class="character" src="images/character9.png" />
       <img class="shadow" src="images/shadow.png" />
     </div>
   </div>
