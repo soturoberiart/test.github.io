@@ -37,78 +37,64 @@
       text-align: center;
     }
 
-    .slot img {
+    .character {
       position: absolute;
       width: 32px;
-      height: 32px;
+      height: 64px;
+      top: 0;
       left: 50%;
       transform: translateX(-50%);
-    }
-
-    .head {
-      top: 0;
       z-index: 2;
     }
 
-    .body {
-      top: 32px;
-      z-index: 1;
-    }
-
     .shadow {
-      top: 64px;
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      top: 52px; /* 64px (character height) - 12px overlap */
+      left: 50%;
+      transform: translateX(-50%);
       opacity: 0.5;
-      z-index: 0;
+      z-index: 1;
     }
   </style>
 </head>
 <body>
   <div class="grid">
-    <!-- 9 character slots -->
-    <!-- Replace head#.png and body#.png as needed -->
     <div class="slot">
-      <img class="head" src="images/test 1.png" />
-      <img class="body" src="images/test 2.png" />
+      <img class="character" src="images/character1.png" />
       <img class="shadow" src="images/shadow.png" />
     </div>
     <div class="slot">
-      <img class="head" src="images/head2.png" />
-      <img class="body" src="images/body2.png" />
+      <img class="character" src="images/character2.png" />
       <img class="shadow" src="images/shadow.png" />
     </div>
     <div class="slot">
-      <img class="head" src="images/head3.png" />
-      <img class="body" src="images/body3.png" />
+      <img class="character" src="images/character3.png" />
       <img class="shadow" src="images/shadow.png" />
     </div>
     <div class="slot">
-      <img class="head" src="images/head4.png" />
-      <img class="body" src="images/body4.png" />
+      <img class="character" src="images/character4.png" />
       <img class="shadow" src="images/shadow.png" />
     </div>
     <div class="slot">
-      <img class="head" src="images/head5.png" />
-      <img class="body" src="images/body5.png" />
+      <img class="character" src="images/character5.png" />
       <img class="shadow" src="images/shadow.png" />
     </div>
     <div class="slot">
-      <img class="head" src="images/head6.png" />
-      <img class="body" src="images/body6.png" />
+      <img class="character" src="images/character6.png" />
       <img class="shadow" src="images/shadow.png" />
     </div>
     <div class="slot">
-      <img class="head" src="images/head7.png" />
-      <img class="body" src="images/body7.png" />
+      <img class="character" src="images/character7.png" />
       <img class="shadow" src="images/shadow.png" />
     </div>
     <div class="slot">
-      <img class="head" src="images/head8.png" />
-      <img class="body" src="images/body8.png" />
+      <img class="character" src="images/character8.png" />
       <img class="shadow" src="images/shadow.png" />
     </div>
     <div class="slot">
-      <img class="head" src="images/head9.png" />
-      <img class="body" src="images/body9.png" />
+      <img class="character" src="images/character9.png" />
       <img class="shadow" src="images/shadow.png" />
     </div>
   </div>
