@@ -10,7 +10,7 @@
       padding: 0;
       height: 100%;
       overflow: hidden;
-      background-images: url('images/test 3/background.png');
+      background-image: url('images/test 3/background.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -53,10 +53,10 @@
     <script>
       const container = document.querySelector('.container');
       const rows = [9, 10, 11, 12, 13, 14, 15, 16]; // Total = 100 characters
-      const charWidth = 36;  // tighter spacing horizontally
-      const rowHeight = 44;  // tighter spacing vertically
+      const charWidth = 36;
+      const rowHeight = 44;
       const charSize = 64;
-      const startTop = 5; // percentage from top
+      const startTop = 5;
 
       let characterCount = 1;
 
@@ -70,18 +70,32 @@
           if (characterCount > 100) break;
 
           const leftPx = rowStartLeft + i * charWidth;
-
           const wrapper = document.createElement('div');
           wrapper.className = 'character-wrapper';
-          wrapper.style.top = `calc(${rowTop})`;
+          wrapper.style.top = rowTop;
           wrapper.style.left = `${leftPx}px`;
 
-          wrapper.innerHTML = `
-            <img class="character" src="images/character${characterCount}.png" />
-            <img class="shadow" src="images/shadow.png" />
-          `;
+          // Create image element for character
+          const characterImg = new Image();
+          characterImg.className = 'character';
 
+          const pngSrc = `images/character${characterCount}.png`;
+          const gifSrc = `images/character${characterCount}.gif`;
+
+          // Try gif first
+          characterImg.src = gifSrc;
+          characterImg.onerror = () => {
+            characterImg.src = pngSrc;
+          };
+
+          const shadowImg = new Image();
+          shadowImg.className = 'shadow';
+          shadowImg.src = 'images/shadow.png';
+
+          wrapper.appendChild(characterImg);
+          wrapper.appendChild(shadowImg);
           container.appendChild(wrapper);
+
           characterCount++;
         }
       });
